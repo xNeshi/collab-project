@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 
 type LayoutProps = Readonly<{ children: React.ReactNode }>;
 export default function Layout({ children }: LayoutProps) {
