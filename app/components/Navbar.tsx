@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { auth, signOut, signIn } from "../auth";
-import { redirect } from "next/dist/server/api-utils";
 
 export const Navbar = async () => {
   const session = await auth();
