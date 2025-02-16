@@ -5,7 +5,7 @@ import { redirect } from "next/dist/server/api-utils";
 
 export const Navbar = async () => {
   const session = await auth();
-  const logoSize = { width: 120, height: 20 };
+  const logoSize = { width: 280, height: 30 };
 
   const handleSignIn = async () => {
     "use server";
@@ -22,7 +22,7 @@ export const Navbar = async () => {
       <nav className="flex justify-between items-center">
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/web-logo.png"
             alt="logo"
             width={logoSize.width}
             height={logoSize.height}
