@@ -11,7 +11,8 @@ type searchFormProps = {
 
 export default async function Home({ searchParams }: searchFormProps) {
   const query = (await searchParams).query;
-  const { data: posts } = await sanityFetch({ query: PROJECTS_QUERY });
+  const params = { search: query || null };
+  const { data: posts } = await sanityFetch({ query: PROJECTS_QUERY, params });
 
   return (
     <>
