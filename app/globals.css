@@ -113,12 +113,11 @@
     @apply font-medium text-[20px] text-white max-w-2xl text-center break-words;
   }
 
-  /* Grid Layout */
-  .card_grid {
+  .grid_card {
     @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
   }
 
-  .card_grid-sm {
+  .grid_card-sm {
     @apply grid sm:grid-cols-2 gap-5;
   }
 
@@ -172,64 +171,64 @@
   }
 
   .search-input {
-    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    @apply flex-1 font-medium placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
   }
 
   .search-btn {
-    @apply size-[50px] rounded-full bg-black flex justify-center items-center;
+    @apply size-[50px] rounded-full bg-black flex justify-center items-center hover:bg-black-100 active:bg-black-200;
   }
 
-  /* Startup Card */
-  .startup-card {
+  /* project Card */
+  .project-card {
     @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
   }
 
-  .startup-card_date {
+  .project-card_date {
     @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full;
   }
 
-  .startup-card_desc {
+  .project-card_desc {
     @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
   }
 
-  .startup-card_img {
+  .project-card_img {
     @apply w-full h-[164px] rounded-[10px] object-cover;
   }
 
-  .startup-card_btn {
+  .project-card_btn {
     @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3;
   }
 
-  .startup-card_skeleton {
+  .project-card_skeleton {
     @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
 
-  /* Startup Form */
-  .startup-form {
+  /* project Form */
+  .project-form {
     @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
   }
 
-  .startup-form_label {
+  .project-form_label {
     @apply font-bold text-[18px] text-black uppercase;
   }
 
-  .startup-form_input {
+  .project-form_input {
     @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300;
   }
 
-  .startup-form_textarea {
+  .project-form_textarea {
     @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300;
   }
 
-  .startup-form_error {
+  .project-form_error {
     @apply text-red-500 mt-2 ml-5;
   }
 
-  .startup-form_editor {
+  .project-form_editor {
     @apply mt-3 border-[3px] border-black text-[18px] text-black font-semibold placeholder:text-black-300;
   }
 
-  .startup-form_btn {
+  .project-form_btn {
     @apply bg-primary border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px];
   }
 

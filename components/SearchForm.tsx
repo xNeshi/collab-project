@@ -11,7 +11,7 @@ export const SearchForm = ({ query }: SearchFormProps) => {
     <Form
       action="/"
       scroll={false}
-      className="search-form pl-6"
+      className="search-form pl-7"
       autoComplete="off"
     >
       <input

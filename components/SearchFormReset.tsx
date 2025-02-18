@@ -13,7 +13,7 @@ export const SearchFormReset = () => {
     <button
       type="reset"
       onClick={resetHandler}
-      className="search-btn text-white"
+      className="search-btn text-white "
     >
       <Link href="/">
         <X className="size-5" />

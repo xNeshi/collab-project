@@ -45,7 +45,7 @@ export const Navbar = async () => {
               </form>
 
               <Link href={`/users/${session?.id}`}>
-                <span>{session?.user?.name}</span>
+                <span className="line-clamp-1">{session?.user?.name}</span>
               </Link>
             </>
           ) : (
