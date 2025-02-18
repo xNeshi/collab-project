@@ -1,8 +1,7 @@
 import SearchForm from "../../components/SearchForm";
-import { use } from "react";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
 import { ProjectCard, ProjectCardType } from "@/components/ProjectCard";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -12,7 +11,8 @@ type searchFormProps = {
 
 export default async function Home({ searchParams }: searchFormProps) {
   const query = (await searchParams).query;
-  const posts = await client.fetch(PROJECTS_QUERY);
+  const { data: posts } = await sanityFetch({ query: PROJECTS_QUERY });
+
   return (
     <>
       <section className="main_container">
@@ -44,6 +44,8 @@ export default async function Home({ searchParams }: searchFormProps) {
           )}
         </ul>
       </section>
+
+      <SanityLive />
     </>
   );
 }
