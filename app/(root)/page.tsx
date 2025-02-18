@@ -1,8 +1,8 @@
-import ProjectCard from "@/components/ProjectCard";
 import SearchForm from "../../components/SearchForm";
 import { use } from "react";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+import { ProjectCard, ProjectCardType } from "@/components/ProjectCard";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: searchFormProps) {
 
         <ul className="grid_card mt-7 ">
           {posts?.length > 0 ? (
-            posts.map((post) => (
+            posts.map((post: ProjectCardType) => (
               <ProjectCard
                 key={post._id}
                 project={post}

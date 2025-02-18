@@ -3,13 +3,16 @@ import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Author, Project } from "@/sanity/types";
 
-export const ProjectCard = ({ project }: { project: ProjectCard }) => {
+export type ProjectCardType = Omit<Project, "author"> & { author?: Author };
+
+export const ProjectCard = ({ project }: { project: ProjectCardType }) => {
   const {
     _createdAt,
     views,
     description,
-    author: { id: authorId, name },
+    author,
     title,
     category,
     _id,
@@ -28,14 +31,14 @@ export const ProjectCard = ({ project }: { project: ProjectCard }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
-            <p className="text-16-medium line-clamp-1">{name}</p>
+          <Link href={`/user/${author?._id}`}>
+            <p className="text-16-medium line-clamp-1">{author?.name}</p>
           </Link>
           <Link href={`/project/${_id}`}>
             <p className="text-26-semibold line-clamp-1">{title}</p>
           </Link>
         </div>
-        <Link href={`/user/${authorId}`}>
+        <Link href={`/user/${author?._id}`}>
           <Image
             src="https://placehold.co/48x48"
             alt="avatar"
@@ -55,7 +58,7 @@ export const ProjectCard = ({ project }: { project: ProjectCard }) => {
         ></img>
       </Link>
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
         <Button
