@@ -1,6 +1,8 @@
 import ProjectCard from "@/components/ProjectCard";
 import SearchForm from "../../components/SearchForm";
 import { use } from "react";
+import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -8,42 +10,9 @@ type searchFormProps = {
   }>;
 };
 
-export default function Home({ searchParams }: searchFormProps) {
-  const query = use(searchParams).query;
-
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 1,
-      description: "A project to build a new website",
-      image: "https://placehold.co/300x200",
-      category: "Web Development",
-      title: "New Website",
-    },
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 2,
-      description: "A project to build a new website",
-      image: "https://placehold.co/300x200",
-      category: "Web Development",
-      title: "New Website",
-    },
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 3,
-      description: "A project to build a new website",
-      image: "https://placehold.co/300x200",
-      category: "Web Development",
-      title: "New Website",
-    },
-  ];
-
+export default async function Home({ searchParams }: searchFormProps) {
+  const query = (await searchParams).query;
+  const posts = await client.fetch(PROJECTS_QUERY);
   return (
     <>
       <section className="main_container">
