@@ -30,12 +30,17 @@ export const ProjectCard = ({ project }: { project: ProjectCardType }) => {
       </div>
 
       <div className="flex-between mt-5 gap-5">
-        <div className="flex-1">
-          <Link href={`/user/${author?._id}`}>
-            <p className="text-16-medium line-clamp-1">{author?.name}</p>
+        <div className="flex flex-col">
+          <Link
+            href={`/user/${author?._id}`}
+            className="flex size-fit"
+          >
+            <p className="text-16-medium line-clamp-1 size-fit">
+              {author?.name}
+            </p>
           </Link>
           <Link href={`/project/${_id}`}>
-            <p className="text-26-semibold line-clamp-1">{title}</p>
+            <p className="text-26-semibold line-clamp-1 size-fit">{title}</p>
           </Link>
         </div>
         <Link href={`/user/${author?._id}`}>

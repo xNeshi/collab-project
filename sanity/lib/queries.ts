@@ -17,7 +17,7 @@ export const PROJECTS_QUERY = defineQuery(
 );
 
 export const PROJECT_BY_ID_QUERY = defineQuery(
-  `*[_type == 'project' && _id == $id] {
+  `*[_type == 'project' && _id == $id][0] {
   _id,
   title,
   slug,
