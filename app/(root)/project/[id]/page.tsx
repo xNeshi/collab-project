@@ -69,10 +69,6 @@ export const Page = async ({ params }: PageProps) => {
 
             <div className="flex gap-2">
               <p className="category-tag">{post.category}</p>
-              <p className="view-in-post category-tag">
-                <EyeIcon className="size-6 text-primary p-0 inline-flex mr-2" />
-                {formatViews(post.views)}
-              </p>
             </div>
           </div>
 
@@ -93,11 +89,9 @@ export const Page = async ({ params }: PageProps) => {
 
         <hr className="divider" />
 
-        <VisibilityHandler docIdToHideFrom="view-in-post">
-          <Suspense fallback={<Skeleton className="view_skeleton" />}>
-            <View id={id} />
-          </Suspense>
-        </VisibilityHandler>
+        <Suspense fallback={<Skeleton className="view_skeleton" />}>
+          <View id={id} />
+        </Suspense>
       </section>
     </>
   );
