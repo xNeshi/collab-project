@@ -12,3 +12,11 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 }
+
+export function formatViews(views: number): string {
+  if (views <= 1) return `${views.toString()} View`;
+  if (views < 1_000) return `${views.toString()} Views`;
+  if (views < 1_000_000) return `${(views / 1_000).toFixed(1)}K Views`;
+  if (views < 1_000_000_000) return `${(views / 1_000_000).toFixed(1)}M Views`;
+  return `${(views / 1_000_000_000).toFixed(1)}B Views`;
+}

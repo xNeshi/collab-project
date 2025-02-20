@@ -145,7 +145,7 @@
 
   /* Idea Details */
   .divider {
-    @apply border-dotted bg-zinc-400 max-w-4xl my-10 mx-auto;
+    @apply border-dotted border-0 border-t-5 max-w-4xl my-10 mx-auto;
   }
 
   .view_skeleton {
@@ -154,7 +154,7 @@
 
   /* Navbar */
   .avatar {
-    @apply p-0 focus-visible:ring-0 bg-none rounded-full drop-shadow-md;
+    @apply p-0 focus-visible:ring-0 bg-none rounded-full object-cover drop-shadow-md;
   }
 
   .dropdown-menu {

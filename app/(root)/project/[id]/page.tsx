@@ -1,10 +1,17 @@
 import { PROJECT_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+
 import { notFound } from "next/navigation";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatViews } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Suspense } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import markdownit from "markdown-it";
+import View from "@/components/View";
+import { EyeIcon } from "lucide-react";
+import { VisibilityHandler } from "@/components/VisibilityHandler";
 
 const md = markdownit();
 export const experimental_ppr = true;
@@ -60,11 +67,18 @@ export const Page = async ({ params }: PageProps) => {
               </div>
             </Link>
 
-            <p className="category-tag">{post.category}</p>
+            <div className="flex gap-2">
+              <p className="category-tag">{post.category}</p>
+              <p className="view-in-post category-tag">
+                <EyeIcon className="size-6 text-primary p-0 inline-flex mr-2" />
+                {formatViews(post.views)}
+              </p>
+            </div>
           </div>
 
           <h3 className="text-30-bold">Concept Details</h3>
-          <div className="w-full border-4 border-b-black-300"></div>
+          <hr className="divider" />
+
           {parsedContent ? (
             <article
               className="prose max-w-4xl"
@@ -76,6 +90,14 @@ export const Page = async ({ params }: PageProps) => {
             <p className="no-result">No details provided</p>
           )}
         </div>
+
+        <hr className="divider" />
+
+        <VisibilityHandler docIdToHideFrom="view-in-post">
+          <Suspense fallback={<Skeleton className="view_skeleton" />}>
+            <View id={id} />
+          </Suspense>
+        </VisibilityHandler>
       </section>
     </>
   );

@@ -32,3 +32,9 @@ export const PROJECT_BY_ID_QUERY = defineQuery(
   concept,
   }`
 );
+
+export const PROJECTS_VIEWS_QUERY = defineQuery(
+  `*[_type == 'project' && _id == $id][0] {
+  views
+  }`
+);
