@@ -1,3 +1,4 @@
+import { generateId } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { writeClient } from "@/sanity/lib/write-client";
@@ -19,6 +20,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user, profile }) {
       const { sub, login, bio } = profile!;
       const { name, email, image } = user;
+      const id = generateId(sub!, email!);
+
       const existingUser = await client
         .withConfig({ useCdn: false })
         .fetch(AUTHOR_BY_ID_QUERY, { id: sub });
@@ -27,7 +30,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         await writeClient.create({
           _type: "author",
           _id: sub,
-          id: sub,
+          id: id,
           name,
           username: login,
           email,
@@ -47,13 +50,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             id: profile.sub,
           });
 
-        token.id = user?.id;
+        token.id = user?._id;
       }
       return token;
     },
 
     async session({ session, token }) {
-      Object.assign(session, { id: token.id });
+      session.user.id = token.id as string;
       return session;
     },
   },
