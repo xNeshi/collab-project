@@ -29,8 +29,8 @@ export const ProjectCard = ({ project }: { project: ProjectCardType }) => {
         </div>
       </div>
 
-      <div className="flex-between mt-5 gap-5">
-        <div className="flex flex-col">
+      <div className="flex-between mt-5">
+        <div className="flex flex-col w-fit overflow-clip">
           <Link
             href={`/user/${author?._id}`}
             className="flex size-fit"
@@ -40,22 +40,24 @@ export const ProjectCard = ({ project }: { project: ProjectCardType }) => {
             </p>
           </Link>
           <Link href={`/project/${_id}`}>
-            <p className="text-26-semibold line-clamp-1 size-fit">{title}</p>
+            <p className="text-26-semibold line-clamp-1 size-fit overflow-ellipsis">
+              {title}
+            </p>
           </Link>
         </div>
         <Link href={`/user/${author?._id}`}>
           <Image
-            src="https://placehold.co/48x48"
+            src={author?.image!}
             alt="avatar"
             width={48}
             height={48}
-            className="rounded-full"
+            className="avatar flex-shrink-0"
           ></Image>
         </Link>
       </div>
+
       <Link href={`/project/${_id}`}>
         <p className="project-card_desc">{description}</p>
-
         <img
           src={image}
           alt="project image"

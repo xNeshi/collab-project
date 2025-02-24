@@ -154,7 +154,7 @@
 
   /* Navbar */
   .avatar {
-    @apply p-0 focus-visible:ring-0 bg-none rounded-full object-cover drop-shadow-md;
+    @apply p-0 h-13 w-13 rounded-full overflow-clip object-cover bg-none drop-shadow-md;
   }
 
   .dropdown-menu {

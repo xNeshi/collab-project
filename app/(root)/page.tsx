@@ -2,6 +2,7 @@ import SearchForm from "../../components/SearchForm";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { ProjectCard, ProjectCardType } from "@/components/ProjectCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "../auth";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -13,6 +14,7 @@ export default async function Home({ searchParams }: searchFormProps) {
   const query = (await searchParams).query;
   const params = { search: query || null };
   const { data: posts } = await sanityFetch({ query: PROJECTS_QUERY, params });
+  const session = await auth();
 
   return (
     <>
