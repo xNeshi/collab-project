@@ -31,7 +31,7 @@ export const Navbar = async () => {
         <div className="flex items-center gap-8 text-xl text-black">
           {session && session?.user ? (
             <>
-              <Link href="/collab/create">
+              <Link href="/project/create">
                 <span>Create</span>
               </Link>
 

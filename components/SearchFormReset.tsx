@@ -10,12 +10,12 @@ export const SearchFormReset = () => {
   };
 
   return (
-    <button
-      type="reset"
-      onClick={resetHandler}
-      className="search-btn text-white "
-    >
-      <Link href="/">
+    <button type="reset">
+      <Link
+        href="/"
+        onClick={resetHandler}
+        className="search-btn text-white "
+      >
         <X className="size-5" />
       </Link>
     </button>
