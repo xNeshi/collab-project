@@ -10,7 +10,9 @@ export const Page = () => {
   return (
     <>
       <section className="main_container !min-h-[230px]">
-        <h1 className="heading">Create your Project Concept</h1>
+        <h1 className="heading">
+          Create your Project, <br /> Detail your Concept
+        </h1>
       </section>
 
       <ProjectForm />

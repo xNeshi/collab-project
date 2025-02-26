@@ -8,7 +8,7 @@ import { Suspense } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import markdownit from "markdown-it";
+const markdownit = require("markdown-it");
 import View from "@/components/View";
 import { EyeIcon } from "lucide-react";
 import { VisibilityHandler } from "@/components/VisibilityHandler";
