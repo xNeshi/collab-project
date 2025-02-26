@@ -4,7 +4,8 @@ import { auth, signOut, signIn } from "../app/auth";
 
 export const Navbar = async () => {
   const session = await auth();
-  const logoSize = { width: 280, height: 30 };
+  const logoSize = { width: 250, height: 30 };
+  const logoOnlySize = { width: 50, height: 50 };
 
   const handleSignIn = async () => {
     "use server";
@@ -19,13 +20,21 @@ export const Navbar = async () => {
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
       <nav className="flex justify-between items-center">
-        <Link href="/">
+        <Link
+          href="/"
+          className="flex items-center gap-3 m-2 ml-3"
+        >
           <Image
-            src="/web-logo.png"
+            src="/logo-only-xl.png"
+            alt="logo only"
+            width={logoOnlySize.width}
+            height={logoOnlySize.height}
+          />
+          <Image
+            src="/latest-logo.png"
             alt="logo"
             width={logoSize.width}
             height={logoSize.height}
-            className="m-3"
           />
         </Link>
         <div className="flex items-center gap-8 text-xl text-black">

@@ -158,11 +158,9 @@ export const ProjectForm = () => {
 
         {errors?.link && (
           <div className="project-form_error text-red-500 text-sm mt-1">
-            {errors.link
-              .split(". ") // Split camelCase words
-              .map((error, index) => (
-                <p key={index}>{error}</p>
-              ))}
+            {errors.link.split(". ").map((error, index) => (
+              <p key={index}>{error}</p>
+            ))}
           </div>
         )}
       </div>
