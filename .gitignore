@@ -42,3 +42,5 @@ next-env.d.ts
 
 # my random shit
 _todo
+# Sentry Config File
+.env.sentry-build-plugin
