@@ -14,7 +14,8 @@ export function formatDate(date: string) {
   });
 }
 
-export function formatViews(views: number): string {
+export function formatViews(views: number | null): string {
+  if (views === null) return "0 View";
   if (views <= 1) return `${views.toString()} View`;
   if (views < 1_000) return `${views.toString()} Views`;
   if (views < 1_000_000) return `${(views / 1_000).toFixed(1)}K Views`;
@@ -22,7 +23,7 @@ export function formatViews(views: number): string {
   return `${(views / 1_000_000_000).toFixed(1)}B Views`;
 }
 
-export const generateId = (name: string, email: string) => {
+export function generateId(name: string, email: string) {
   return (
     email.split("@")[0] +
     "-" +
@@ -30,4 +31,12 @@ export const generateId = (name: string, email: string) => {
     "-" +
     Math.floor(Math.random() * 10000)
   );
-};
+}
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response));
+}
+
+export async function LoadingUiTester(delay: number) {
+  return await new Promise((resolve) => setTimeout(resolve, delay));
+}

@@ -1,27 +1,38 @@
 import { link } from "fs";
 import { z } from "zod";
 
-const titleErrorMessage = "Title must be between 3 and 60 characters";
-const descriptionErrorMessage =
-  "Description must be between 20 and 100 characters";
-const categoryErrorMessage = "Category must be between 3 and 30 characters";
-const linkErrorMessage = "Link must be a valid URL";
-const imageErrorMessage = "Link should contain a valid image URL";
-const conceptErrorMessage = "Concept must be at least 50 characters";
+const charLimits = {
+  title: { min: 3, max: 60 },
+  description: { min: 50, max: 200 },
+  category: { min: 3, max: 30 },
+  concept: { min: 50 },
+};
+
+const errorMessages = {
+  title: `Title must be between ${charLimits.title.min} and ${charLimits.title.max} characters`,
+  description: `Description must be between ${charLimits.description.min} and ${charLimits.description.max} characters`,
+  category: `Category must be between ${charLimits.category.min} and ${charLimits.category.max} characters`,
+  link: "Link must be a valid URL",
+  image: "Link should contain a valid image URL",
+  concept: `Concept must be at least ${charLimits.concept.min} characters`,
+};
 
 export const formSchema = z.object({
-  title: z.string().min(3, titleErrorMessage).max(60, titleErrorMessage),
+  title: z
+    .string()
+    .min(charLimits.title.min, errorMessages.title)
+    .max(charLimits.title.max, errorMessages.title),
   description: z
     .string()
-    .min(20, descriptionErrorMessage)
-    .max(100, descriptionErrorMessage),
+    .min(charLimits.description.min, errorMessages.description)
+    .max(charLimits.description.max, errorMessages.description),
   category: z
     .string()
-    .min(3, categoryErrorMessage)
-    .max(30, categoryErrorMessage),
+    .min(charLimits.category.min, errorMessages.category)
+    .max(charLimits.category.max, errorMessages.category),
   link: z
     .string()
-    .url(linkErrorMessage)
+    .url(errorMessages.link)
     .refine(async (url) => {
       try {
         const res = await fetch(url, { method: "HEAD" });
@@ -30,6 +41,6 @@ export const formSchema = z.object({
       } catch {
         return false;
       }
-    }, imageErrorMessage),
-  concept: z.string().min(50, conceptErrorMessage),
+    }, errorMessages.image),
+  concept: z.string().min(charLimits.concept.min, errorMessages.concept),
 });

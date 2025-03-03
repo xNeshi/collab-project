@@ -10,6 +10,7 @@ import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { createProject } from "@/lib/actions";
 
 export const ProjectForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>();
@@ -28,14 +29,14 @@ export const ProjectForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      // const result = await createProject(prevState, formData, concept);
+      const result = await createProject(prevState, formData, concept);
 
-      // if (result.status === "SUCCESS") {
-      //   toast.success("Your Project is Created Successfully");
-      //   router.push('/startup/${result.id}')
-      // }
+      if (result.status === "SUCCESS") {
+        toast.success("Your Project is Created Successfully");
+        router.push(`/project/${result._id}`);
+      }
 
-      // return result;
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
@@ -202,7 +203,7 @@ export const ProjectForm = () => {
       <Button
         type="submit"
         disabled={isPending}
-        className="project-form_btn text-white disabled:opacity-25"
+        className="project-form_btn text-white disabled:opacity-25 hover:!bg-[#05449ca2] active:!bg-[#031e45]"
       >
         {isPending ? "Creating Project..." : "Submit your Project"}
         <Send className="size-6 ml-2" />

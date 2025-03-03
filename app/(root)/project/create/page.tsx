@@ -2,9 +2,10 @@ import ProjectForm from "@/components/ProjectForm";
 import React from "react";
 import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
+import { LoadingUiTester } from "@/lib/utils";
 
-export const Page = () => {
-  const session = auth();
+export const Page = async () => {
+  const session = await auth();
   if (!session) redirect("/");
 
   return (

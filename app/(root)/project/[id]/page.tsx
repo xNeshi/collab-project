@@ -39,7 +39,7 @@ export const Page = async ({ params }: PageProps) => {
       </section>
 
       <section className="section_container">
-        <div className="w-full md:h-[500px] h-fit rounded-xl border-4 overflow-clip shadow-200 shadow-primary">
+        <div className="w-full md:h-[500px] h-fit rounded-xl border-4 overflow-clip shadow-100 hover:shadow-300">
           <img
             src={post.image}
             alt="project image"
