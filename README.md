@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Collab Project
 
-## Getting Started
+[![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[![Next.JS](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+[![Sanity](https://img.shields.io/badge/sanity-F03E2F?style=for-the-badge&logo=sanity&logoColor=white)](https://img.shields.io/badge/sanity-F03E2F?style=for-the-badge&logo=sanity&logoColor=white)
+[![Sentry](https://img.shields.io/badge/Sentry-black?style=for-the-badge&logo=Sentry&logoColor=#362D59)](https://img.shields.io/badge/Sentry-black?style=for-the-badge&logo=Sentry&logoColor=#362D59)
 
-First, run the development server:
+# Disclaimer
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project gives full credit to JavaScript Mastery for the tutorial or guide used in this application. Check the full video on ["Next.js 15 Crash Course"](https://www.youtube.com/watch?v=Zq5fmkH0T78&t=17564s)
+
+# Quick Start / Setup
+
+Follow these steps for quick start of using the app
+
+### Pre-requisites
+
+Make sure that these are installed in your local machine
+
+- ["git"](https://git-scm.com/)
+- ["Node.js"](https://nodejs.org/en)
+- ["npm"](https://www.npmjs.com/) / ["pnpm"](https://pnpm.io/)
+
+### Installation on Local Machine
+
+Clone the repository
+
+```shell
+git clone https://github.com/xNeshi/collab-project.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install the packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm install // for npm only
+pnpm install // for pnpm only --force // optional
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Setup the environmental variables
 
-## Learn More
+Replace the values with the actual credentials that you will get from Next Auth, Google Provider, Sanity, and Sentry. `SENTRY_SUPPRESS_TURBOPACK_WARNING` is optional and could be excluded depending on use cases.
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+SANITY_WRITE_TOKEN=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+SENTRY_AUTH_TOKEN=
+SENTRY_SUPPRESS_TURBOPACK_WARNING=
+```
 
-## Deploy on Vercel
+Run the project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```shell
+npm run dev // for npm only
+pnpm run dev // for pnpm only
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project should be running on http://localhost:3000
