@@ -32,15 +32,15 @@ git clone https://github.com/xNeshi/collab-project.git
 Install the packages
 
 ```shell
-npm install // for npm only
-pnpm install // for pnpm only --force // optional
+npm install # for npm only
+pnpm install # for pnpm only, add --force if needed
 ```
 
 Setup the environmental variables
 
 Replace the values with the actual credentials that you will get from Next Auth, Google Provider, Sanity, and Sentry. `SENTRY_SUPPRESS_TURBOPACK_WARNING` is optional and could be excluded depending on use cases.
 
-```shell
+```dotenv
 AUTH_SECRET=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
@@ -56,8 +56,8 @@ SENTRY_SUPPRESS_TURBOPACK_WARNING=
 Run the project
 
 ```shell
-npm run dev // for npm only
-pnpm run dev // for pnpm only
+npm run dev # for npm only
+pnpm run dev # for pnpm only
 ```
 
 Project should be running on http://localhost:3000
