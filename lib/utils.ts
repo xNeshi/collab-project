@@ -40,3 +40,7 @@ export function parseServerActionResponse<T>(response: T) {
 export async function LoadingUiTester(delay: number) {
   return await new Promise((resolve) => setTimeout(resolve, delay));
 }
+
+export const handlerPreventDefault = (e: Event) => {
+  e.preventDefault();
+};
