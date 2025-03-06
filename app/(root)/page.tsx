@@ -1,9 +1,11 @@
+"use client";
+
 import SearchForm from "../../components/SearchForm";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { ProjectCard, ProjectCardType } from "@/components/ProjectCard";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
-import { auth } from "../auth";
-import { LoadingUiTester } from "@/lib/utils";
+import { client } from "@/sanity/lib/client";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -11,10 +13,19 @@ type searchFormProps = {
   }>;
 };
 
-export default async function Home({ searchParams }: searchFormProps) {
-  const query = (await searchParams).query;
-  const params = { search: query || null };
-  const { data: posts } = await sanityFetch({ query: PROJECTS_QUERY, params });
+export default function Home({ searchParams }: searchFormProps) {
+  const search = useSearchParams().get("search");
+  const [posts, setPosts] = useState<ProjectCardType[] | null>(null);
+
+  useEffect(() => {
+    const loadingPage = async () => {
+      const data = await client.fetch(PROJECTS_QUERY, {
+        search: search || null,
+      });
+      setPosts(data);
+    };
+    loadingPage();
+  }, [searchParams]);
 
   return (
     <>
@@ -26,29 +37,32 @@ export default async function Home({ searchParams }: searchFormProps) {
           Post your Projects, Find Peers with Same Interest, and Collaborate to
           Complete your Goal
         </p>
-        <SearchForm query={query} />
+        <SearchForm query={search as string | undefined} />
       </section>
 
       <section className="section_container">
         <p className="text-30-semibold">
-          {query ? `Search results for "${query}"` : "Latest Projects"}
+          {search ? `Search results for "${search}"` : "Latest Projects"}
         </p>
 
         <ul className="grid_card mt-7 ">
-          {posts?.length > 0 ? (
-            posts.map((post: ProjectCardType) => (
-              <ProjectCard
+          {posts && posts.length > 0 ? (
+            posts?.map((post: ProjectCardType) => (
+              <Suspense
                 key={post._id}
-                project={post}
-              />
+                fallback="Loading..."
+              >
+                <ProjectCard
+                  key={post._id}
+                  project={post}
+                />
+              </Suspense>
             ))
           ) : (
             <p className="no-reults">No projects found</p>
           )}
         </ul>
       </section>
-
-      <SanityLive />
     </>
   );
 }
