@@ -25,7 +25,7 @@ export const SignInModal = ({ onSignIn }: SignInModalProps) => {
             <User size={25} />
           </div>
 
-          <span className="cursor-pointer hidden sm:block">Sign In</span>
+          <span className="cursor-pointer">Sign In</span>
         </div>
       </DialogTrigger>
       <DialogContent className="font-work-sans sm:w-120 ">

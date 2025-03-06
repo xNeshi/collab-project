@@ -9,6 +9,7 @@ export const Navbar = async () => {
   const session = await auth();
   const logoSize = { width: 250, height: 30 };
   const logoOnlySize = { width: 50, height: 50 };
+  const isLoggedIn = session && session?.user;
 
   const handleSignIn = async () => {
     "use server";
@@ -42,7 +43,7 @@ export const Navbar = async () => {
           />
         </Link>
         <div className="flex items-center gap-2 sm:gap-5 text-xl text-black">
-          {session && session?.user ? (
+          {isLoggedIn ? (
             <>
               <Link href="/project/create">
                 <Plus className="bg-gray-200 hover:bg-gray-300 p-3 size-11.5 rounded-full cursor-pointer active:bg-gray-400" />
