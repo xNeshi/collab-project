@@ -6,6 +6,7 @@ import { ProjectCard, ProjectCardType } from "@/components/ProjectCard";
 import { client } from "@/sanity/lib/client";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import SplashScreen from "@/components/SplashScreen";
 
 type searchFormProps = {
   searchParams: Promise<{
@@ -15,6 +16,7 @@ type searchFormProps = {
 
 export default function Home({ searchParams }: searchFormProps) {
   const search = useSearchParams().get("query");
+  const [splashScreen, setSplashScreen] = useState(true);
   const [posts, setPosts] = useState<ProjectCardType[] | null>(null);
 
   useEffect(() => {
@@ -23,9 +25,15 @@ export default function Home({ searchParams }: searchFormProps) {
         search: search || null,
       });
       setPosts(data);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      setSplashScreen(false);
     };
     loadingPage();
   }, [search]);
+
+  if (splashScreen) {
+    return <SplashScreen />;
+  }
 
   return (
     <>
