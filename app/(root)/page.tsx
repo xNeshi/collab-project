@@ -14,7 +14,7 @@ type searchFormProps = {
 };
 
 export default function Home({ searchParams }: searchFormProps) {
-  const search = useSearchParams().get("search");
+  const search = useSearchParams().get("query");
   const [posts, setPosts] = useState<ProjectCardType[] | null>(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Home({ searchParams }: searchFormProps) {
       setPosts(data);
     };
     loadingPage();
-  }, [searchParams]);
+  }, [search]);
 
   return (
     <>
