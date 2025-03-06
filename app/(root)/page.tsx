@@ -25,7 +25,7 @@ export default function Home({ searchParams }: searchFormProps) {
         search: search || null,
       });
       setPosts(data);
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setSplashScreen(false);
     };
     loadingPage();
