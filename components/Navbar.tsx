@@ -45,7 +45,7 @@ export const Navbar = async () => {
           {session && session?.user ? (
             <>
               <Link href="/project/create">
-                <Plus className="bg-gray-200 hover:bg-gray-300 p-3 size-11.5 rounded-full cursor-pointer" />
+                <Plus className="bg-gray-200 hover:bg-gray-300 p-3 size-11.5 rounded-full cursor-pointer active:bg-gray-400" />
               </Link>
 
               <form
@@ -53,7 +53,7 @@ export const Navbar = async () => {
                 className="flex flex-fill"
               >
                 <button type="submit">
-                  <LogOutIcon className="bg-gray-200 hover:bg-gray-300 p-3 size-11.5 rounded-full cursor-pointer" />
+                  <LogOutIcon className="bg-gray-200 hover:bg-gray-300 p-3 size-11.5 rounded-full cursor-pointer active:bg-gray-400" />
                 </button>
               </form>
 
