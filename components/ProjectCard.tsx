@@ -1,9 +1,10 @@
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Author, Project } from "@/sanity/types";
+import { Skeleton } from "./ui/skeleton";
 
 export type ProjectCardType = Omit<Project, "author"> & { author?: Author };
 
@@ -76,6 +77,18 @@ export const ProjectCard = ({ project }: { project: ProjectCardType }) => {
         </Button>
       </div>
     </li>
+  );
+};
+
+export const ProjectCardSkeleton = () => {
+  return (
+    <>
+      {[0, 1, 2, 3, 4].map((index: number) => (
+        <li key={cn("skeleton", index)}>
+          <Skeleton className="project-card_skeleton" />
+        </li>
+      ))}
+    </>
   );
 };
 

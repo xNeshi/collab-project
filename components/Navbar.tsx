@@ -57,7 +57,7 @@ export const Navbar = async () => {
                 </button>
               </form>
 
-              <Link href={`/users/${session?.user.id}`}>
+              <Link href={`/user/${session?.user.id}`}>
                 <div className="flex gap-3 items-center cursor-pointer">
                   <div>
                     {session?.user.image ? (

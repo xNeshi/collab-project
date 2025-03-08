@@ -18,6 +18,23 @@ export const PROJECTS_QUERY = defineQuery(
   }`
 );
 
+export const PROJECTS_BY_AUTHOR_ID_QUERY = defineQuery(
+  `*[_type == 'project' && author._ref == $id]
+  | order(_createdAt desc){
+  _id,
+  title,
+  slug,
+  _createdAt,
+  author -> {
+    _id, name, image
+  },
+  views,
+  description,
+  category,
+  image
+  }`
+);
+
 export const PROJECT_BY_ID_QUERY = defineQuery(
   `*[_type == 'project' && _id == $id][0] {
   _id,
