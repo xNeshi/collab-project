@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { auth, signOut, signIn } from "../app/auth";
 import SignInModal from "./SignInModal";
-import { Sign } from "crypto";
 import { LogOutIcon, Plus } from "lucide-react";
 
 export const Navbar = async () => {
@@ -61,11 +60,15 @@ export const Navbar = async () => {
               <Link href={`/users/${session?.user.id}`}>
                 <div className="flex gap-3 items-center cursor-pointer">
                   <div>
-                    <img
-                      src={session?.user.image ?? ""}
-                      alt="user profile"
-                      className="rounded-full size-11"
-                    />
+                    {session?.user.image ? (
+                      <Image
+                        src={session?.user.image}
+                        alt={session?.user.name ?? "User Image"}
+                        width={50}
+                        height={50}
+                        className="rounded-full"
+                      />
+                    ) : null}
                   </div>
                   <span className="hidden md:block">{session?.user.name}</span>
                 </div>
